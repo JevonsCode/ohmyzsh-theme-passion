@@ -84,7 +84,7 @@ function update_command_status() {
     then
         arrow="%{$fg_bold[red]%}❱%{$fg_bold[yellow]%}❱%{$fg_bold[green]%}❱";
     else
-        arrow="%{$fg_bold[red]%}❱❱❱";
+        arrow="%{$fg_bold[red]%}❱%{$fg_bold[yellow]%}❱%{$fg_bold[red]%}❱";
     fi
     COMMAND_STATUS="${arrow}${reset_font}${color_reset}";
 }
@@ -132,7 +132,8 @@ output_command_execute_after() {
     local color_cost="$fg_no_bold[cyan]";
     cost="${color_cost}${cost}${color_reset}";
 
-    echo -e "${time} ${cost} ${cmd}";
+    echo -e "${time} ${cost} ${cmd} \c";
+    echo -e " 🔚";
     echo -e "";
 }
 
@@ -211,3 +212,4 @@ TRAPALRM() {
 # prompt
 # PROMPT='$(real_time) $(login_info) $(directory) $(git_status)$(command_status) ';
 PROMPT='$(real_time) $(directory) $(git_status)$(command_status) ';
+
